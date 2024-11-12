@@ -49,18 +49,10 @@ class MainActivity : ComponentActivity() {
                 var changeColor: Boolean by remember { mutableStateOf(true) }
                 var expanded: Boolean by remember { mutableStateOf(false) }
                 var togled: Boolean by remember { mutableStateOf(false) }
-                val animatedAlpha: Float by animateFloatAsState(
-                    targetValue = if (fade) 1f else 0f,
-                    label = "alpha"
-                )
-                val animatedColor: Color by animateColorAsState(
-                    targetValue = if (changeColor) Color(0XFF4A8FF3) else Color(0xFFFF9800),
-                    label = "color"
-                )
-                val animatedPadding: Dp by animateDpAsState(
-                    targetValue = if (togled) 32.dp else 0.dp,
-                    label = "pading"
-                )
+                // TODO : Put good paramaters in animate function
+                val animatedAlpha: Float by animateFloatAsState()
+                val animatedColor: Color by animateColorAsState()
+                val animatedPadding: Dp by animateDpAsState()
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -68,15 +60,14 @@ class MainActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.Center
                 ) {
+                    // Hide Scale Out Animation :
                     AnimatedVisibility(
                         visible = visible,
                         enter = scaleIn(),
                         exit = scaleOut()
                     ) {
                         Box(
-                            modifier = Modifier
-                                .size(110.dp)
-                                .background(Color(0XFF4A8FF3))
+                            modifier = Modifier // TODO : Apply the good modifier
                         )
                     }
                     Spacer(modifier = Modifier.size(11.dp))
@@ -86,13 +77,10 @@ class MainActivity : ComponentActivity() {
                             fontSize = 11.sp
                         )
                     }
+
+                    // Hide Fade Animation :
                     Box(
-                        modifier = Modifier
-                            .size(110.dp)
-                            .graphicsLayer {
-                                alpha = animatedAlpha
-                            }
-                            .background(Color(0XFF4A8FF3))
+                        modifier = Modifier // TODO : Apply the good modifier
 
                     )
                     Spacer(modifier = Modifier.size(22.dp))
@@ -102,10 +90,9 @@ class MainActivity : ComponentActivity() {
                             fontSize = 11.sp
                         )
                     }
+                    // Chnage Color Animation :
                     Box(
-                        modifier = Modifier
-                            .size(110.dp)
-                            .drawBehind { drawRect(animatedColor) }
+                        modifier = Modifier // TODO : Apply the good modifier
 
                     )
                     Spacer(modifier = Modifier.size(11.dp))
@@ -124,11 +111,9 @@ class MainActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.End,
                     verticalArrangement = Arrangement.Center
                 ) {
+                    // Height Expansion Animation :
                     Box(
-                        modifier = Modifier
-                            .width(110.dp)
-                            .height(if (expanded) 60.dp else 110.dp)
-                            .background(Color(0XFF4A8FF3))
+                        modifier = Modifier // TODO : Apply the good modifier
 
                     )
 
@@ -139,12 +124,9 @@ class MainActivity : ComponentActivity() {
                             fontSize = 11.sp
                         )
                     }
-
+                    // Padding Animation :
                     Box(
-                        modifier = Modifier
-                            .size(110.dp)
-                            .padding(animatedPadding)
-                            .background(Color(0XFF4A8FF3))
+                        modifier = Modifier // TODO : Apply the good modifier
 
                     )
 
