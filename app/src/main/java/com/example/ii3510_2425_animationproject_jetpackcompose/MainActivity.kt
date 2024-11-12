@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.scaleIn
@@ -17,7 +16,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -60,11 +58,13 @@ class MainActivity : ComponentActivity() {
                     label = "color"
                 )
                 val animatedPadding: Dp by animateDpAsState(
-                    targetValue = if(togled) 32.dp else 0.dp,
+                    targetValue = if (togled) 32.dp else 0.dp,
                     label = "pading"
                 )
                 Column(
-                    modifier = Modifier.fillMaxSize().padding(32.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(32.dp),
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.Center
                 ) {
@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
                     Box(
                         modifier = Modifier
                             .size(110.dp)
-                            .graphicsLayer{
+                            .graphicsLayer {
                                 alpha = animatedAlpha
                             }
                             .background(Color(0XFF4A8FF3))
@@ -118,14 +118,16 @@ class MainActivity : ComponentActivity() {
                 }
 
                 Column(
-                    modifier = Modifier.fillMaxSize().padding(32.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(32.dp),
                     horizontalAlignment = Alignment.End,
                     verticalArrangement = Arrangement.Center
                 ) {
                     Box(
                         modifier = Modifier
                             .width(110.dp)
-                            .height(if(expanded) 60.dp else 110.dp)
+                            .height(if (expanded) 60.dp else 110.dp)
                             .background(Color(0XFF4A8FF3))
 
                     )
